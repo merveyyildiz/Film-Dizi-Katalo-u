@@ -1,3 +1,6 @@
+*{
+  font-size:18px;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +13,52 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.film-box{
+  margin-top:3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.film-box img{
+  width:10rem;
+  height: auto;
+  transition: all 0.3s;
+}
+.film-box img:hover{
+  width:13rem;
+  height: auto;
+}
+.card-box{
+  height:25rem;
+  margin-bottom: 1rem;
+}
+.card-title a{
+  transition: all, 0.3s;
+}
+.card-title a:hover{
+  color:green;
+  text-decoration:none;
+}
+.img-box{
+  height:15rem;
+}
+.text-green{
+  color:green
+}
+.text-lightgreen{
+  color:lightskyblue
+}
+.text-lightcoral{
+  color:lightcoral
+}
+.text-lightseagreen{
+  color:lightseagreen
+}
+.text-royalblue{
+  color: royalblue
+}
+.text-palevioletred{
+  color: palevioletred
 }
