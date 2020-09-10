@@ -6,7 +6,7 @@ const Pagination = ({ postsPerPage, totalPost, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <nav className="container">
+    <nav className="container ml-4">
       <div className="d-flex justify-content-center">
         <ul className="pagination">
           {pageNumbers.map((number) => (

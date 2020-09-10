@@ -10,7 +10,6 @@ function App() {
   const [currentPage, setCurrentPage]= useState(1);
   const [postsPerPage] = useState(10);
   const [q, setQuery] = useState('pokemon');
-  let datalength=!data?null:data.length;
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -21,10 +20,8 @@ function App() {
    .then((response) => {
      if (response.Response === 'False') {
        setError(response.Error);
-       
      } else {
        setData(response.Search);
-       console.log(currentPage);
      }
      setLoading(false);
    })
@@ -43,14 +40,14 @@ function App() {
             <input
               type="text"
               className="col-md-6 form-control mb-4"
-              placeholder="Film/Dizi adı, yıl veya imbd puanı giriniz."
+              placeholder="Film, Dizi yada Yıl giriniz."
               onChange={(event) => setQuery(event.target.value)}
             />
           </div>
           <Posts posts={data} loading={loading} />
           <Pagination
             postsPerPage={postsPerPage}
-            totalPost={150}
+            totalPost={100}
             paginate={paginate}
           />
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Post from './components/Post';

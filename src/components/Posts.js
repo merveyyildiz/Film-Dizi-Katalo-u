@@ -1,51 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import myimg from '../images/img-not-found.png'
 const Posts = ({ posts, loading }) => {
   if (loading) {
     return <h2>Loading.. </h2>;
   }
   return (
     <div className="container">
-      <div className="row">
-        {!posts
-          ? null
-          : posts.map((post) => {
-              return (
-                <div className="col-md-4 pl-2 " key={post.imdbID}>
-                  <div className="card card-box">
-                    <img
-                      src={post.Poster}
-                      className="card-img-top img-fluid img-box" alt="poster"
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title my-title">
-                        <Link
-                          to={{
-                            pathname: '/detail',
-                            state: {
-                              title: post.Title,
-                              imdb: post.imdbID,
-                              img: post.Poster,
-                              year: post.Year,
-                              type: post.Type,
-                            },
-                          }}
-                        >
-                          {post.Title}
-                        </Link>
-                      </h5>
-                    
-                      <p className="card-text">
-                        Yıl:{post.Year}<br></br>
-                        Imdb İd:{post.imdbID}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="cols">Poster</th>
+            <th scope="cols">Film/Dizi Adı</th>
+            <th scope="cols">Yıl</th>
+            <th scope="cosl">Imdb Id</th>
+          </tr>
+        </thead>
+          <tbody>
+            {!posts
+              ? null
+              : posts.map((post) => {
+                  return (
+                      <tr key={post.imdbID}>
+                        <th>
+                          <img
+                            src={post.Poster==='N/A' ? myimg : post.Poster}
+                            className="img-fluid "style={{width:"150px",height:"auto"}}
+                            alt="poster"
+                          />
+                        </th>
+                        <th>
+                          <h5 className="my-title">
+                            <Link
+                              to={{
+                                pathname: '/detail',
+                                state: {
+                                  imdbId: post.imdbID,
+                                },
+                              }}
+                            >
+                              {post.Title}
+                            </Link>
+                          </h5>
+                        </th>
+
+                        <th className="card-text">
+                          {post.Year}
+                         </th><th>
+                          {post.imdbID}
+                        </th>
+                      </tr>
+                  );
+                })}
+          </tbody>
+        </table>
       </div>
-    </div>
   );
 };
 

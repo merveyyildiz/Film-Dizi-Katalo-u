@@ -1,12 +1,13 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import myimg from '../images/img-not-found.png'
 const Post = (props) => {
-  const title = props.location.state.title;
+  const imdbId = props.location.state.imdbId;
   const [loading, setLoading] = useState(null);
   const [data, setData] = useState(null);
   useEffect(() => {
     setLoading(true);
-    fetch(`http://www.omdbapi.com/?t=${title}&apikey=ea5d4c63`)
+    fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=ea5d4c63`)
       .then((response) => response.json())
       .then((res) => {
         if (res.Response !== 'False') {
@@ -19,7 +20,7 @@ const Post = (props) => {
       .catch(({ message }) => {
         setLoading(false);
       });
-  }, [title]);
+  }, [imdbId]);
   if (loading === true) {
     return <h2>Loading...</h2>;
   } else {
@@ -27,7 +28,7 @@ const Post = (props) => {
       <div className="container">
         <div className="film-box">
           <img
-            src={!data ? null : data.Poster}
+            src={!data ? null : data.Poster === 'N/A' ? myimg : data.Poster}
             alt="poster"
             className="animate__animated animate__bounceInDown"
           />
