@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage]= useState(1);
-  const [postsPerPage] = useState(6);
+  const [postsPerPage] = useState(10);
   const [q, setQuery] = useState('pokemon');
   let datalength=!data?null:data.length;
   useEffect(() => {
@@ -16,14 +16,15 @@ function App() {
     setError(null);
     setData(null);
 
- fetch(`http://www.omdbapi.com/?s=${q}&apikey=ea5d4c63`)
+ fetch(`http://www.omdbapi.com/?s=${q}&apikey=ea5d4c63&page=${currentPage}`)
    .then((resp) => resp.json())
    .then((response) => {
      if (response.Response === 'False') {
        setError(response.Error);
+       
      } else {
        setData(response.Search);
-       console.log(response.Search);
+       console.log(currentPage);
      }
      setLoading(false);
    })
@@ -31,13 +32,10 @@ function App() {
      setError(message);
      setLoading(false);
    });
-  }, [q]);
+  }, [q,currentPage]);
 
-      const indexOfLastPost = currentPage*postsPerPage;
-      const indexOfFirstPost = indexOfLastPost-postsPerPage;
-      const currentPost = !data ? null :data.slice(indexOfFirstPost, indexOfLastPost);
   
-      const paginate=(pageNumber)=> setCurrentPage(pageNumber);
+      const paginate = (pageNumber)=>{ setCurrentPage(pageNumber);}
       return (
         <div className="container">
           <div className="d-flex align-items-center flex-column mt-4">
@@ -49,10 +47,10 @@ function App() {
               onChange={(event) => setQuery(event.target.value)}
             />
           </div>
-          <Posts posts={currentPost} loading={loading} />
+          <Posts posts={data} loading={loading} />
           <Pagination
             postsPerPage={postsPerPage}
-            totalPost={datalength}
+            totalPost={150}
             paginate={paginate}
           />
         </div>
