@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+MERVE YILDIZ .
 
 ### `npm start`
 
-npm start komutu ile proje ayağa kaldırılacaktır.<br />
+npm start komutu ile proje ayağa kaldırılacaktır.

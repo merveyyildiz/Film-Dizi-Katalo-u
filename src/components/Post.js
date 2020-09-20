@@ -1,10 +1,11 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import myimg from '../images/img-not-found.png'
-const Post = (props) => {
-  const imdbId = props.location.state.imdbId;
+import myimg from '../images/img-not-found.png';
+import { useSelector } from 'react-redux';
+const Post = () => {
   const [loading, setLoading] = useState(null);
   const [data, setData] = useState(null);
+  const imdbId=useSelector((state)=>state.postId);
   useEffect(() => {
     setLoading(true);
     fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=ea5d4c63`)

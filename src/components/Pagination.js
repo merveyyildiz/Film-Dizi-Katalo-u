@@ -1,6 +1,9 @@
-import React from 'react'
-
-const Pagination = ({ postsPerPage, totalPost, paginate }) => {
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+const Pagination = ({ paginate }) => {
+  const totalPost = useSelector((state) => state.totalPost);
+  const [postsPerPage] = useState(10);
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPost / postsPerPage); i++) {
     pageNumbers.push(i);
