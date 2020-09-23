@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const Post = () => {
   const [loading, setLoading] = useState(null);
   const [data, setData] = useState(null);
-  const imdbId=useSelector((state)=>state.postId);
+  const imdbId = useSelector((state) => state.postId);
   useEffect(() => {
     setLoading(true);
     fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=ea5d4c63`)

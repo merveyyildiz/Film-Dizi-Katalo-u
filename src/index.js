@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore } from 'redux';
 import Post from './components/Post';
-import {reducer} from './reducer';
+import { reducer } from './reducer';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
